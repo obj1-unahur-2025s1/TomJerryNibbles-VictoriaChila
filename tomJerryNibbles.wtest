@@ -1,5 +1,65 @@
 import tomJerryNibbles.*
 
+test "Velocidad Máxima Inicial de Tom"{
+  assert.equals(10, tom.velocidadMaxima())
+}
+
+test "Velocidad Máxima tras comer a Jerry"{
+  tom.comer(jerry)
+  assert.equals(15.2, tom.velocidadMaxima())
+}
+
+test "Velocidad Máxima después de comer a Jerry y correr 24 mts"{
+  tom.comer(jerry)
+  tom.correr(24)
+  assert.equals(14, tom.velocidadMaxima())
+}
+
+test "Velocidad Máxima después de comer a Nibbles"{
+  tom.comer(jerry)
+  tom.correr(24)
+  tom.comer(nibbles)
+  assert.equals(18.7, tom.velocidadMaxima())
+}
+
+test "Velocidad Máxima de Tom luego de comer a un Jerry de tres años"{
+  tom.comer(jerry)
+  tom.correr(24)
+  tom.comer(nibbles)
+  jerry.cumplirAño()
+  tom.comer(jerry)
+  assert.equals(25.9, tom.velocidadMaxima())
+}
+
+test "Velocidad Máxima después de correr 38 mts"{
+  tom.comer(jerry)
+  tom.correr(24)
+  tom.comer(nibbles)
+  jerry.cumplirAño()
+  tom.comer(jerry)
+  tom.correr(38)
+  assert.equals(24, tom.velocidadMaxima())
+}
+
+test "Tom puede cazar a un ratón que esté a 100 mts de distancia"{
+  assert.that(tom.puedeCazar(100))
+}
+
+test "Tom puede cazar a un ratón que esté a 101 mts de distancia"{
+  assert.notThat(tom.puedeCazar(101))
+}
+
+test "Velocidad Máxima de Tom tras cazar a Perez sin dientes encima"{
+  tom.cazar(perez, 0)
+  assert.equals(12.7, tom.velocidadMaxima())
+}
+
+test "Velocidad Máxima de Tom tras correr 10 mts tras cazar a Perez sin dientes encima"{
+  tom.cazar(perez, 10)
+  assert.equals(12.2, tom.velocidadMaxima())
+}
+
+
 describe "Grupo de test" {
 
   test "test 1" {
